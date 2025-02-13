@@ -1,0 +1,189 @@
+.main_user_auth {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 165, 129);
+}
+
+.container_user_auth {
+  width: 1000px;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+}
+/* register user  */
+.register_user {
+  width: 500px;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0%;
+  animation: register_toright 2s ease;
+}
+.register_user_toleft {
+  width: 500px;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -50%;
+  animation: register_toleft 2s ease;
+}
+@keyframes register_toleft {
+  0% {
+    left: 0%;
+    opacity: 80%;
+  }
+  100% {
+    left: -50%;
+    opacity: 0%;
+  }
+}
+@keyframes register_toright {
+  0% {
+    left: -50%;
+    opacity: 0%;
+  }
+  100% {
+    left: 0%;
+    opacity: 100%;
+  }
+}
+.form_register {
+  width: 65%;
+}
+/* header in register  */
+.header_register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.header_register > .spanOne {
+  font-size: 1.6rem;
+  font-weight: bold;
+  /* font-family: ; */
+}
+.header_register > .spanTwo {
+  font-size: 1rem;
+  /* font-family: ; */
+}
+.google_login_btn_div {
+  width: 100%;
+  position: relative;
+}
+.google_login_btn_div > button {
+  border: 1px solid rgba(128, 128, 128, 0.205);
+  font-size: 1.1rem;
+}
+.google_login_btn_div > img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -1%;
+  left: 27%;
+}
+/* user login  */
+.login_user {
+  width: 500px;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -50%;
+  animation: login_toright 2s ease;
+}
+/* logintoleft  */
+.login_user_toleft {
+  width: 500px;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0%;
+  animation: logintoleft 2s ease;
+}
+@keyframes logintoleft {
+  0% {
+    right: -50%;
+    opacity: 0%;
+  }
+  100% {
+    right: 0%;
+    opacity: 100%;
+  }
+}
+@keyframes login_toright {
+  0% {
+    right: 0%;
+    opacity: 80%;
+  }
+  100% {
+    right: -50%;
+    opacity: 0%;
+  }
+}
+.form_login {
+  width: 65%;
+}
+/* loginto  */
+.imageBack {
+  width: 500px;
+  height: 83vh;
+  position: absolute;
+  right: 0;
+  animation: imgto_right 2s ease;
+}
+/* img to left  */
+.imgtoleft {
+  width: 500px;
+  height: 83vh;
+  position: absolute;
+  right: 50%;
+  animation: imgtoleft 2s ease;
+}
+@keyframes imgtoleft {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: 50%;
+  }
+}
+@keyframes imgto_right {
+  0% {
+    right: 50%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+
+.form-control::-webkit-input-placeholder {
+  font-size: 1rem;
+}
+.cursor {
+  cursor: pointer;
+}
+
+.errors {
+  color: red;
+  margin-bottom: -15px;
+  font-size:0.8rem;
+}
+.isdisplay {
+  display: none;
+}
