@@ -9,6 +9,14 @@ const Home = () => {
         className="carousel slide carousel-fade"
         data-bs-ride="carousel"
       >
+        <div className="mna">
+          Hi I am <b>Naeem Akhtar</b>
+          <br />a Full-Stack MERN Developer with 2 years of professional
+          experience.
+          <br /> I specialize in <i>React, Node.js, Express, and MongoDB,</i>
+          <br /> building high-performance web applications and scalable
+          back-end systems.
+        </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
@@ -20,13 +28,6 @@ const Home = () => {
           <div className="carousel-item">
             <img
               src="https://images.unsplash.com/photo-1491608651275-1dd08a4471ee?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://images.unsplash.com/photo-1523154410-31a6b052652b?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               className="d-block w-100"
               alt="..."
             />

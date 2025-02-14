@@ -5,18 +5,14 @@ import loginImg from "../assets/login1.jpeg";
 import { SchemaSignIn } from "./Schema";
 import { register } from "../Actions/Action";
 import { login } from "../Actions/Action";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import { RefreshContext } from "../Context/RefreshContext";
 import Schema from "./Schema";
 import { useFormik } from "formik";
-import "../css/bootstrap.min.css";
-import "../css/bootstrap.css";
 import "../css/signup.css";
 
 const Signup = () => {
-  const [show, setShow] = useState(false);
-  const { setRefresh, refresh } = useContext(RefreshContext);
+  const [show, setShow] = useState(true);
+  const { setRefresh } = useContext(RefreshContext);
   const navigate = useNavigate();
   // sign up validation
   const formik = useFormik({
@@ -25,7 +21,7 @@ const Signup = () => {
     onSubmit: (values) => {
       register(values);
       navigate("/");
-      setRefresh(!refresh);
+      setRefresh((refresh) => (refresh ? false : true));
     },
   });
   // sign in validation
@@ -35,7 +31,7 @@ const Signup = () => {
     onSubmit: (values) => {
       login(values);
       navigate("/");
-      setRefresh(!refresh);
+      setRefresh((refresh) => (refresh ? false : true));
     },
   });
 
@@ -194,7 +190,7 @@ const Signup = () => {
                 className="cursor text-center w-100 d-block mt-2"
                 onClick={() => setShow(!show)}
               >
-                Have you first time here? <b>Sign up</b>
+                You Are New? <b>Sign up</b>
               </span>
             </div>
           </form>

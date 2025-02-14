@@ -11,8 +11,12 @@ const listControle = router
     } catch (error) {}
   })
   .get("/api/v1/all", isAuthenticated, async (req, res) => {
+    const input = req.query.search;
     try {
-      const data = await List.find({});
+      const data = await List.find({
+        $or: [{ name: { $regex: new RegExp(input, "i") } }],
+        $or: [{ exp: { $regex: new RegExp(input, "i") } }],
+      });
       const count = await List.count();
       res.status(201).json({ message: "uploaded", count, data });
     } catch (error) {}
@@ -24,7 +28,6 @@ const listControle = router
     } catch (error) {}
   })
   .get("/api/v1/:id", isAuthenticated, async (req, res) => {
-    console.log(req.params.id)
     try {
       const data = await List.findById(req.params.id);
       res.status(201).json({ data });

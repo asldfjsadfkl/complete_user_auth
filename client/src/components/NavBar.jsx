@@ -1,28 +1,26 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../css/bootstrap.min.css";
-import "../css/bootstrap.css";
 import { logout } from "../Actions/Action.js";
 import { userContext } from "../Context/userContext.js";
-import { RefreshContext } from "../Context/RefreshContext.js";
+import { searchContext } from "../Context/SearchContext.js";
 
 const NavBar = () => {
   const { user } = useContext(userContext);
-  const { setRefresh, refresh } = useContext(RefreshContext);
+  const { setInput } = useContext(searchContext);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
     await logout();
     navigate("/");
-    setRefresh(!refresh);
-    console.log(refresh)
+    // alterantive of this exist
+    window.location.reload();
   };
   const status = user?.success;
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <NavLink className="navbar-brand " href="#">
-          USER AUTHENTICATION
+          Authentication
         </NavLink>
         <button
           className="navbar-toggler"
@@ -38,7 +36,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className={status ? "nav-item" : "d-none"}>
-              <NavLink className="nav-link active" aria-current="page" to="/">
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
@@ -65,16 +63,15 @@ const NavBar = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex">
+
+          <form className={status ? "d-flex" : "d-none"}>
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search list data"
               aria-label="Search"
+              onChange={(e) => setInput(e.target.value)}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
           </form>
         </div>
       </div>

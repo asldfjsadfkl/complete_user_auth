@@ -1,59 +1,74 @@
-import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { deleteOnelist } from "../Actions/Action.js";
 import axios from "axios";
 import { backend_url } from "../Utils/backend_url_.js";
+import { searchContext } from "../Context/SearchContext.js";
+
 const Table = () => {
+  const { input } = useContext(searchContext);
   const [list, setList] = useState();
   const [refresh, setRefresh] = useState(false);
   React.useEffect(() => {
     const getLists = async () => {
       try {
         const { data } = await axios.get(`${backend_url}/api/v1/all`, {
+          params: { search: input },
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         });
         setList(data);
       } catch (error) {}
     };
-    getLists();
-  }, [refresh]);
 
+    const settime = setTimeout(() => {
+      getLists();
+    }, 500);
+    return () => clearTimeout(settime);
+  }, [refresh, input]);
+
+  // delete listdata
   const deleteData = (id) => {
-    setRefresh(!refresh);
     deleteOnelist(id);
+    setRefresh(!refresh);
   };
-  ///// pending
-  // const editdata = async (id) => {
-  //   // editOnelist(id);
-  // };
+
   return (
     <div className="w-100 d-flex justify-content-center align-items-center">
       <div className="w-100 d-flex flex-column justify-content-center align-items-center">
-        <section className="w-75 bg-primary text-center fs-4 text-light">
+        <div
+          style={{
+            fontFamily: "Marcellus",
+            fontSize: "1.3rem",
+            height: "7vh",
+            lineHeight: "7vh",
+            fontWeight:"800"
+          }}
+          className="w-75 bg-primary text-center text-light"
+        >
           USER DATA IN TABLE FORM
-        </section>
+        </div>
 
         <table class="table border w-75">
           <thead>
             <tr>
-              <th className="border text-center" scope="col">
+              <th className="fontPop border text-center" scope="col">
                 Number
               </th>
-              <th className="border text-center" scope="col">
+              <th className="fontPop border text-center" scope="col">
                 Name
               </th>
-              <th className="border text-center" scope="col">
+              <th className="fontPop border text-center" scope="col">
                 Email
               </th>
-              <th className="border text-center" scope="col">
+              <th className="fontPop border text-center" scope="col">
                 Phone
               </th>
-              <th className="border text-center" scope="col">
+              <th className="fontPop border text-center" scope="col">
                 Experience
               </th>
-              <th className="border text-center" scope="col">
-                Function
+              <th className="fontPop border text-center" scope="col">
+                Actions
               </th>
             </tr>
           </thead>
@@ -61,13 +76,15 @@ const Table = () => {
             return (
               <tbody key={index}>
                 <tr>
-                  <td className="border text-center">{index + 1}</td>
-                  <td className="border text-center text-capitalize">{dot?.name}</td>
-                  <td className="border text-center">{dot?.email}</td>
-                  <td className="border text-center">{dot?.phone}</td>
-                  <td className="border text-center">{dot?.exp}</td>
+                  <td className="fontPop border text-center">{index + 1}</td>
+                  <td className="fontPop border text-center text-capitalize">
+                    {dot?.name}
+                  </td>
+                  <td className="fontPop border text-center">{dot?.email}</td>
+                  <td className="fontPop border text-center">{dot?.phone}</td>
+                  <td className="fontPop border text-center">{dot?.exp}</td>
 
-                  <td className="border text-center">
+                  <td className="fontPop border text-center">
                     <button
                       onClick={() => deleteData(dot?._id)}
                       type="button"
@@ -76,7 +93,7 @@ const Table = () => {
                       Delete
                     </button>
                     <Link
-                    to={`/update/${dot?._id}`}
+                      to={`/update/${dot?._id}`}
                       type="button"
                       class="btn btn-secondary btn-sm"
                     >

@@ -18,10 +18,23 @@ const CreateList = () => {
   };
   return (
     <main className="d-flex justify-content-xl-center">
-      <form style={{width:"40%"}} className=" border p-5 mt-5" onSubmit={handleSubmit}>
-        <section className="w-100 text-center fs-4 bg-primary text-light">
+      <form
+        style={{ width: "40%" }}
+        className=" border p-5 mt-5"
+        onSubmit={handleSubmit}
+      >
+        <div
+          style={{
+            fontFamily: "Marcellus",
+            fontSize: "1.2rem",
+            height: "6vh",
+            lineHeight: "6vh",
+            fontWeight: "800",
+          }}
+          className="w-100 text-center fs-4 bg-primary text-light"
+        >
           Add new user
-        </section>
+        </div>
 
         <div className="mb-3">
           <label for="exampleInputName1" className="form-label">
